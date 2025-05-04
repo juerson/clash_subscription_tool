@@ -1,0 +1,36 @@
+# 编译
+DOMAIN-SUFFIX,sourceware.org
+DOMAIN-SUFFIX,busybox.net
+DOMAIN-SUFFIX,netcologne.de
+DOMAIN-SUFFIX,leaseweb.com
+DOMAIN-SUFFIX,netfilter.org
+DOMAIN-SUFFIX,ipset.netfilter.org
+DOMAIN-SUFFIX,ucc.asn.au
+DOMAIN-SUFFIX,denx.de
+DOMAIN-SUFFIX,muppetlabs.com
+DOMAIN-SUFFIX,savannah.nongnu.org
+DOMAIN-SUFFIX,dereferenced.org
+DOMAIN-SUFFIX,infraroot.at
+DOMAIN-SUFFIX,immortalwrt.org
+DOMAIN-SUFFIX,jing.rocks
+DOMAIN-SUFFIX,2f30.org
+DOMAIN-SUFFIX,musl.libc.org
+DOMAIN-SUFFIX,quantum-mirror.hu
+DOMAIN-SUFFIX,fastlydns.net
+DOMAIN-SUFFIX,golang.org
+DOMAIN-SUFFIX,launchpad.proxy.ustclug.org
+DOMAIN-SUFFIX,proxy.ustclug.org
+DOMAIN-SUFFIX,ustclug.org
+DOMAIN-SUFFIX,golang.org
+DOMAIN-SUFFIX,proxy.golang.org
+
+# Alpine
+DOMAIN-KEYWORD,alpinelinux
+IP-CIDR,151.101.90.132/32,no-resolve
+IP-CIDR,155.248.196.28/32,no-resolve
+IP-CIDR,74.50.98.131/32,no-resolve
+IP-CIDR,51.81.226.229/32,no-resolve
+IP-CIDR,108.61.73.244/32,no-resolve
+
+# dev
+DOMAIN-SUFFIX,warp.dev

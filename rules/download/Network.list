@@ -1,0 +1,11 @@
+# vpn
+DOMAIN-SUFFIX,mxwljsq.xyz
+DOMAIN-SUFFIX,tailscale.com
+
+# 域名
+DOMAIN-SUFFIX,dynadot.com
+DOMAIN-KEYWORD,tgstat
+
+
+# ipv6测试
+DOMAIN-SUFFIX,test-ipv6.com

@@ -1,0 +1,11 @@
+# 内网直连规则
+SRC-IP-CIDR,10.10.0.22/32,no-resolve
+
+# 个人域名规则
+DOMAIN-SUFFIX,slippindylan.com
+DOMAIN-SUFFIX,jshi9.com
+
+# 订阅
+# DOMAIN-SUFFIX,spphhnhg.top
+# DOMAIN-SUFFIX,galben.xyz
+# DOMAIN-KEYWORD,spphhnhg
