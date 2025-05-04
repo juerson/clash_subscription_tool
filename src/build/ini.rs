@@ -149,6 +149,15 @@ pub fn modify_proxy_groups(
 ) -> String {
     let mut custom_proxy_group = pending_proxy_group.clone();
     let mut remove_proxy_group_proxies_names: Vec<String> = Vec::new();
+
+    // 用于填充含有规则且proxies为空的
+    let mut default_names = if let Some(last) = ruleset_names.last().cloned() {
+        vec![last, "DIRECT".to_string()]
+    } else {
+        vec!["DIRECT".to_string()] // 理论这个分支不可能出现？除非ruleset_names为空
+    };
+    default_names.extend(proxy_names.clone());
+
     for proxy_group in &mut custom_proxy_group {
         let pattern_option = proxy_group.proxies_regexp.clone().unwrap_or_default();
 
@@ -162,10 +171,10 @@ pub fn modify_proxy_groups(
             proxy_group.proxies.extend(filter_node_names);
         }
         // 确保有规则对应的分组，proxies不为空，如果实际为空，则移除该分组
-        if proxy_group.proxies.is_empty() {
+        if proxy_group.proxies.is_empty() && !ruleset_names.contains(&proxy_group.name) {
             if ruleset_names.contains(&proxy_group.name) {
-                // 防止有规则的分组，没有对应的proxies
-                proxy_group.proxies.extend(ruleset_names.clone());
+                // 防止有规则的分组，没有对应的proxies（先添加它，防止后面误判将整个分组都删除）
+                proxy_group.proxies.extend(default_names.clone());
             } else {
                 // 没有规则的分组，可以移除，但是在其它分组的proxies内中有这个分组名称
                 remove_proxy_group_proxies_names.push(proxy_group.name.clone());
@@ -183,6 +192,10 @@ pub fn modify_proxy_groups(
         selectgroup
             .proxies
             .retain(|pn| !remove_proxy_group_proxies_names.contains(pn));
+        // 这个防止本来proxies不为空，但是删除分组名称，导致为空了
+        if selectgroup.proxies.is_empty() {
+            selectgroup.proxies.extend(default_names.clone());
+        }
     });
 
     // 使用结构体，方便序列化后，字段的顺序保持一致
